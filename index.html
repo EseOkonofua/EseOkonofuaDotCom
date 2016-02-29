@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ese Okonofua</title>
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="css/site.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-2.2.1.js"></script>
     <script src="scripts/site.js"></script>
@@ -16,7 +16,7 @@
 
         <div id="title">
             <h1>Ese Okonofua</h1>
-            <h4 class="font-italic">"Welcome..."</h4>
+            <h4 class="font-italic">STUDENT. SOFTWARE DEVELOPER. BOXER. LOVER.</h4>
         </div>
 
         <div class="nav-bar" id="link-bar">
@@ -27,9 +27,9 @@
         </div>
 
         <div class="nav-bar" id="nav-bar">
-            <a class="selected" href="#"> About Me</a>
-            <a title="My Projects " href="#projects" class="one"> Projects </a>
-            <a class="three" href="#contact">Contact</a>
+            <button id="about-me-scroll" class="selected" href="#"> About Me</button>
+            <button id="projects-scroll" title="My Projects " href="#projects" class="one"> Projects </button>
+            <button      id="contact-scroll" class="three" href="#contact">Contact</button>
         </div>
     </div>
 </div>
@@ -60,40 +60,46 @@
     <div class="section" id="projects">
         <h3 class="section-header">MY PROJECTS</h3>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div id="show-case">
-                    <div class="show-case-item selected" id="DSmasher-btn"><span class="item-title">Dungeon Smasher</span>
-                    </div>
-                    <div class="show-case-item" id="ReelMovies-btn"><span class="item-title">Reel Movies</span></div>
-                    <div class="show-case-item" id="UTunes-btn"><span class="item-title">uTunes</span></div>
-                    <div class="show-case-item"></div>
-                    <div class="show-case-item"></div>
-                    <div class="show-case-item"></div>
-                    <div class="show-case-item"></div>
-                    <div class="show-case-item"></div>
-                    <div class="show-case-item"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div id="show-case-info">
-                    <div id="DSmasher" class="show-case-item-info">
-                        <div class="gallery">
-                            <img src="images/dsmasher.png">
-                            <img src="images/gates.jpg">
-                            <img src="images/film-reel.png">
+                    <div id="slider">
+                        <div class="show-case-item" id="DSmasher">
+                            <h3 style="color:#D60015">DUNGEON SMASHER RPG</h3> <span class="status">Work in progress</span><span class="status-circle incomplete"></span>
+                            <p>
+                                Dungeon Smasher RPG is an semi-automated RPG game being made on pure HTML5, CSS3 and JavaScript!<br>
+                                It was created in attempt to develop and improve upon my understanding of the JavaScript language.<br>
+                                Dungeon Smasher is an RPG game that is <strong>semi-automated</strong>. The combat is always automatic but there will be player interactions in real time
+                                <strong>Inventory & equipment management</strong>, <strong>Skill Usage</strong> & <strong>Stat Management</strong>.
+                            </p>
+                            <a class="link-btn">View Alpha</a>
                         </div>
-                        <div class="information">
-                            <h2>Dungeon Smasher RPG</h2>
-                            <p>Dungeon Smasher was a fun side project I decided to take on.</p>
+                        <div class="show-case-item" id="ReelMovies">
+                            <h3 style="color:white">REEL MOVIES</h3> <span class="status">Finished</span><span class="status-circle finished"></span>
+                            <p>
+                                Reel Movies is a website I created for my Web & App Development class in Queen's University<br>
+                                The purpose of creating the website was to teach us about relational databases and how they are connected to websites.<br>
+                                Users can view data on actors and their movies, view ratings and leave a rating on a movie!
+                            </p>
+                            <a class="link-btn">View Site</a>
                         </div>
-                    </div>
-                </div>
+                        <div class="show-case-item" id="UTunes">
+                            <span class="item-title">uTunes</span>
+                        </div>
 
+                    </div>
+                    <div id="slider-nav">
+                        <span title="Dungeon Smasher!" id="DSmasher-btn"  class="circle-btn selected"></span>
+                        <span title ="Reel Movies" id="ReelMovies-btn"  class="circle-btn"></span>
+                        <span id="uTunes-btn"  class="circle-btn"></span>
+                    </div>
+
+                </div>
             </div>
         </div>
+
     </div>
     <div class="section" id="contact">
-        <h3 class="section-header">CONTACT ME</h3>
+        <h3 class="section-header">CONTACT INFORMATION</h3>
         <div class="row">
             <div class="col-md-12">
                 <p>
@@ -101,7 +107,7 @@
                 </p>
                 <p>
                     <strong>Email</strong><br>
-                    <a style="color:darkblue" href="mailto:eseokonofua95@gmail.com">eseokonofua95@gmail.com</a>
+                    <a style="color:darkblue" href="mailto:eseokonofua95@gmail.com">eseokonofua95@gmail.com</a> <a class="link-btn resume-btn">Resume</a>
                 </p>
 
 
@@ -112,57 +118,9 @@
 </div>
 
 <footer>
-    2016 by Ese Okonofua.
+    &copy;2016 by Ese Okonofua.
 </footer>
-<!--
-<div class="container">
 
-
-    <div class="row">
-        <div class="col-md-4">
-
-            <div class="link" id="ReelMovies">
-                <div class="hidden-desc">
-                    <h3 class="link-title">Reel Movies</h3>
-                    <hr/>
-                    <p class="link-desc">A website that utilizes a database to show info about actors, their movies, and
-                        allows for user rating.</p>
-                    <a class="link-btn" href="/">Visit Site</a>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="col-md-4">
-            <div class="link" id="DSmasher">
-                <div class="hidden-desc">
-                    <h3 class="link-title">Dungeon Smasher</h3>
-                    <hr/>
-                    <p class="link-desc">A game utilizing html, css and javascript. You play as a champion on a quest to
-                        defeat the final boss!. </p>
-                    <a class="link-btn" href="/">Visit Site</a>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-md-4">
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-
-        </div>
-        <div class="col-md-4">
-
-        </div>
-        <div class="col-md-4">
-
-        </div>
-    </div>
-</div> -->
-
-<script src="js/bootstrap.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
