@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
     //Fun UI Stuff
-    var colors = ["saddlebrown", "#F44336", "darkblue", "green", "#9C27B0"];
+    var colors = ["saddlebrown", "#F44336", "lightblue", "lightgreen", "#9C27B0"];
     var index = 0;
     setInterval(function () {
         index++;
@@ -13,16 +13,8 @@ $(document).ready(function () {
                 $(this).css("color", colors[index % 5]);
             }
         });
-    }, 2000);
-    setTimeout(function () {
-        $(".hidden-desc").fadeOut(500);
-    }, 3000);
+    }, 2000);;
 
-    $(".link").hover(function () {
-        $(this).find(".hidden-desc").fadeIn(500);
-    }, function () {
-        $(this).find(".hidden-desc").fadeOut(300);
-    });
 
     $("#nav-bar > button").click(function () {
         $(this).blur();
@@ -31,7 +23,6 @@ $(document).ready(function () {
             document.getElementsByClassName("selected")[0].className = theClass;
             this.className = "selected";
         }
-
     });
 
 
@@ -48,19 +39,19 @@ $(document).ready(function () {
     $("#about-me-scroll").click(function () {
         var body = $("html, body");
         var pos = $("#about-me").offset().top - 280;
-        body.stop().animate({scrollTop: pos}, '1500', 'linear');
+        body.stop().animate({scrollTop: pos}, '5000', 'linear');
     });
 
     $("#projects-scroll").click(function () {
         var body = $("html, body");
-        var pos = $("#projects").offset().top - 280;
-        body.stop().animate({scrollTop: pos}, '1500', 'linear');
+        var pos = $("#projects").offset().top - 150;
+        body.stop().animate({scrollTop: pos}, '5000', 'linear');
     });
 
     $("#contact-scroll").click(function () {
         var body = $("html, body");
-        var pos = $("#contact").offset().top - 280;
-        body.stop().animate({scrollTop: pos}, '1500', 'linear');
+        var pos = $(document).height() - $(window).height();
+        body.stop().animate({scrollTop: pos}, '5000', 'linear');
     });
 
 
@@ -82,15 +73,20 @@ $(document).ready(function () {
         $("#slider").css("left", "-100%");
     });
 
+    $("#uTunes-btn").click(function(){
+        $("#slider").css("left","-200%");
+    });
+
     function calibrateNav(){
-        var aboutme = $("#about-me").offset().top - 280;
-        var projects = $("#projects").offset().top - 280;
+        var aboutme = 0;
+        var projects = $("#projects").offset().top - 200;
         var contact = $(document).height() - $(window).height();
 
-        var body = $("body").scrollTop();
+        var body = Math.round($("body").scrollTop()) + 1;
 
 
-        if (body >= aboutme && body < projects - 200) {
+
+        if (body >= aboutme && body < projects ) {
             var className = document.getElementById("about-me-scroll").className;
             $("#nav-bar > button").each(function () {
                 if ($(this).hasClass("selected")) {
@@ -99,7 +95,7 @@ $(document).ready(function () {
             });
             document.getElementById("about-me-scroll").className = "selected";
         }
-        else if (body >= projects - 200 && body < contact) {
+        else if (body >= projects  && body < contact) {
             var className = document.getElementById("projects-scroll").className;
             $("#nav-bar > button").each(function () {
                 if ($(this).hasClass("selected")) {
