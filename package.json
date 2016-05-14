@@ -1,0 +1,21 @@
+{
+  "name": "ese",
+  "version": "1.0.0",
+  "description": "Ese's website that's super cool",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Home",
+    "page",
+    "Ese"
+  ],
+  "author": "Ese Okonofua",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "socket.io": "^1.4.6"
+  }
+}

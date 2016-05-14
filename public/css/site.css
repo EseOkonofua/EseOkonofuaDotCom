@@ -21,8 +21,7 @@ strong.love{
 }
 
 .section{
-    padding:15px 0px;
-    border-bottom:1px solid #cccccc;
+    padding:25px 0px;
 }
 
 .section:last-of-type{
@@ -31,6 +30,22 @@ strong.love{
 
 .section-header{
     margin-bottom:15px;
+    text-align:center;
+}
+
+#about-me p{
+    margin-top:10px;
+    text-align:center;
+    padding:0px 45px;
+}
+#about-me p:first-child:first-letter{
+    font-size: 2em;
+    font-weight:bold;
+}
+
+#projects{
+    background-color:black;
+    color:white;
 }
 
 #show-case{
@@ -40,6 +55,7 @@ strong.love{
     width:100%;
     background-color:black;
 }
+
 
 #slider{
 
@@ -89,7 +105,7 @@ strong.love{
     transition: all 0.3s ease-in-out;
     background-size:100px auto;
     background-repeat:no-repeat;
-    background-position:bottom right;
+    background-position:90% bottom;
 }
 
 .show-case-item h3{
@@ -135,7 +151,7 @@ a:hover{
 
 .header{
     background-image: url("../images/dark-softcloth.png");
-    height:280px;
+    height:150px;
     width:100%;
     display:flex;
     justify-content:center;
@@ -150,8 +166,6 @@ a:hover{
 
 }
 
-
-
 hr{
     border:none;
     border-bottom:1px solid white;
@@ -165,8 +179,6 @@ hr{
     color:white;
     display: table;
     text-align: center;
-    border-bottom:1px solid white;
-    border-top:1px solid white;
     margin-bottom:20px;
 }
 
@@ -181,6 +193,7 @@ hr{
 #nav-bar{
     justify-content:center;
     bottom:0;
+ padding-bottom:5px;
 }
 
 #nav-bar button{
@@ -200,39 +213,27 @@ hr{
     border:none;
     outline:none;
 }
-.one{
-    order:1;
-}
-.three{
-    order:3;
-}
+
 #nav-bar button.selected{
-    background-color:rgba(0,0,0,0.6);
     color:white;
-    order:2;
     padding:5px;
-    position:relative;
-    bottom:10px;
-    border:1px solid white;
-    -webkit-transform: scale(1.2,1.2);
-    -moz-transform: scale(1.2,1.2);
-    -ms-transform: scale(1.2,1.2);
-    -o-transform: scale(1.2,1.2);
-    transform: scale(1.2,1.2);
+    -webkit-transform: scale(1.4,1.4);
+    -moz-transform: scale(1.4,1.4);
+    -ms-transform: scale(1.4,1.4);
+    -o-transform: scale(1.4,1.4);
+    transform: scale(1.4,1.4);
 
 }
 
-#nav-bar button.selected:hover{
-    background-color:white;
-}
 #link-bar{
+    display:flex;
     top:2px;
-    justify-content: flex-end;
+    justify-content: center;
     height:30px;
 }
 
 .link-img{
-    height:30px;
+    height:23px;
     width:auto;
     -webkit-filter: grayscale(1);
     -ms-filter:grayscale(1);
@@ -255,10 +256,11 @@ hr{
     top:2.5px;
 }
 #link-bar a{
-    margin:0px 7px;
+    margin:0px 3px;
 }
 
 #title h1{
+    margin-top:0;
     text-transform: uppercase;
 }
 
@@ -287,18 +289,19 @@ hr{
 }
 
 #main-body{
-    margin-top:280px;
-    font-size:1.3em;
+    margin-top:150px;
 }
 #ReelMovies{
     background-image: url("../images/film-reel.png");
-
+    background-size:150px auto;
 }
 
 #DSmasher{
     background-image: url("../images/dsmasher.png");
 
 }
+
+
 
 footer{
 
@@ -313,8 +316,8 @@ footer{
     background-color:white;
     cursor:pointer;
     display:inline-block;
-    height:20px;
-    width:20px;
+    height:14px;
+    width:14px;
     -webkit-border-radius:20px;
     -moz-border-radius:20px;
     border-radius:20px;
@@ -367,43 +370,37 @@ footer{
     color:white;
     border:1px solid #cccccc;
 }
-@media(max-height:570px){
-    .header{
-        height:230px;
-    }
+
+.img-gallery{
+    width:100%;
+    display:flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.img-gallery img {
+    height:100px;
+    margin-right:10px;
+    width:auto;
 }
 
-@media(max-height:450px){
-    .header{
-        height:200px;
-    }
-    #main-body{
-        margin-top:200px
-    }
-
-}
-
-@media(max-height:325px){
-    .header{
-        height:150px;
-    }
-
-    #title{
-        border:none;
-    }
-
-    #main-body{
-        margin-top:150px
-    }
-
-    #title h1{
-        margin-top:0;
-    }
-}
 
 
 @media(max-width:325px){
     #nav-bar button{
         font-size:0.65em;
+    }
+}
+
+@media(max-width:470px){
+    .resume-btn{
+        bottom:0;
+        margin-left:0;
+    }
+}
+
+@media(min-width:1000px){
+    .show-case-item p{
+        padding-right:50px;
     }
 }

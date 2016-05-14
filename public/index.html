@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ese Okonofua</title>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="css/site.css" rel="stylesheet"/>
+    <link rel="icon" href="images/favicon.ico">
+    <script src="https://code.jquery.com/jquery-2.2.1.js"></script>
+    <script src="scripts/site.js"></script>
+
+</head>
+<body>
+<div class="fixed">
+    <div class="header">
+
+        <div id="title">
+            <h1>Ese Okonofua</h1>
+            <h4 class="font-italic">STUDENT. SOFTWARE DEVELOPER. BOXER.</h4>
+        </div>
+
+
+        <div class="nav-bar" id="nav-bar">
+            <button id="about-me-scroll" class="selected" href="#"> About Me</button>
+            <button id="projects-scroll" title="My Projects " href="#projects" class="one"> Projects </button>
+            <button      id="contact-scroll" class="three" href="#contact">Contact</button>
+        </div>
+    </div>
+</div>
+<div  id="main-body">
+    <div class="section" id="about-me">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" style="text-align: center"><img src="images/Capture.PNG" class="img-circle portrait">
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        Hello and welcome to my humble website!<br>
+                        I'm currently a Biomedical Computing Student at Queen's University. I'm interested in all aspects of Programming,
+                        Web, Software & Game development. I spend most of my days hacking away, exploring and using the latest in programming tech. I'm a
+                        competitive, collaborative aspiring Full Stack Developer!
+
+                    </p>
+                    <hr>
+                    <p>
+
+                        I enjoy spending my down time  working up a sweat and pushing my body to it's limits in the Boxing Gym, Fooding, Hopping on Steam
+                        and Gaming till I can't no mo' and catching up on the latest episodes of my favorite shows like The Walking Dead and Game of Thrones.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="projects">
+        <div class="container">
+            <h3 class="section-header">MY PROJECTS</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="show-case">
+                        <div id="slider">
+                            <div class="show-case-item" id="DSmasher">
+                                <h3 style="color:#D60015">DUNGEON SMASHER RPG</h3> <span class="status">Work in progress</span><span class="status-circle incomplete"></span>
+                                <p>
+                                    Dungeon Smasher RPG is an semi-automated RPG game being made on pure HTML5, CSS3 and JavaScript!
+                                    It was created in attempt to develop and improve upon my understanding of the JavaScript language.
+                                    Dungeon Smasher is an RPG game that is semi-automated. The combat is always automatic but there will be player interactions in real time
+                                    Inventory & equipment management, Skill Usage & Stat Management. In it's current state it is very rough work and a UI overhaul is due! It is only optimized for Google Chrome.
+                                </p>
+                                <a target="_blank" href="https://github.com/EseOkonofua/Dungeon-Smasher-RPG-" class="link-btn">View on GitHub</a>
+                            </div>
+                            <div class="show-case-item" id="ReelMovies">
+                                <h3 style="color:white">REEL MOVIES</h3> <span class="status">Finished</span><span class="status-circle finished"></span>
+                                <p>
+                                    Reel Movies is a website I created for my Web & App Development class in Queen's University<br>
+                                    The purpose of creating the website was to teach us about relational databases (MySQL) and how they are connected to websites(PHP).<br>
+                                    Users can view data on actors and their movies, view ratings and leave a rating on a movie!
+                                </p>
+                                <a target="_blank" href="/Reel%20Movies/ReelMoviesHome.php" class="link-btn">View Site</a>
+                            </div>
+                            <div class="show-case-item" id="uTunes">
+                                <h3 style="color:#9C27B0">uTunes</h3> <span class="status">Finished</span><span class="status-circle finished"></span>
+                                <p>
+                                    uTunes is a project made for my software development class. My team proposed an intelligent, flexible,
+                                    lightweight music player that can be used without advanced computer or music knowledge.
+                                    Users could import their music libraries and associate
+                                    custom tags with their songs (ie. Rock, Happy, Sad, Party).
+                                    Users could then quickly add songs to the playing queue by selecting which tags
+                                    they want to listen to. This software was constructed using Microsoft Visual Studio & C++.
+                                </p>
+				<a target="_blank" href="https://github.com/EseOkonofua/uTunes" class = "link-btn">View on GitHub</a>
+                                <div class="img-gallery">
+                                    <img src="images/uTunesGUIBeta.PNG">
+                                    <img src="images/uTunesPosterSmall.png">
+                                    <img src="images/uTunesLogo.png">
+                                </div>
+				
+                            </div>
+
+                        </div>
+                        <div id="slider-nav">
+                            <span title="Dungeon Smasher!" id="DSmasher-btn"  class="circle-btn selected"></span>
+                            <span title ="Reel Movies" id="ReelMovies-btn"  class="circle-btn"></span>
+                            <span title="uTunes" id="uTunes-btn"  class="circle-btn"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="section" id="contact">
+        <div class="container">
+            <h3 class="section-header">CONTACT INFORMATION</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        Send me a message. I'd love to hear from you!
+                    </p>
+                    <p>
+                        <strong>Email</strong><br>
+                        <a style="color:darkblue" href="mailto:eseokonofua95@gmail.com">eseokonofua95@gmail.com</a>
+                        <a href="resources/Ese%20Okonofua%20Resume%20Jan%2010.pdf" class="link-btn resume-btn">Resume</a>
+                    </p>
+
+                    <div id="link-bar">
+                        <a target="_blank" title="My LinkedIn Profile" href="https://ca.linkedin.com/in/ese-okonofua-889ab9110"> <img
+                                class="link-img" src="images/LinkedIn-24.png"></a>
+                        <a target="_blank" title="My GitHub Profile" href="https://github.com/EseOkonofua"> <img class="link-img"
+                                                                                                 src="images/GitHub-26.png"> </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    &copy;2016 by Ese Okonofua.
+</footer>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
