@@ -5,10 +5,11 @@ var app = require('../server');
 var http = require('http');
 var socket = require('./socketserver');
 
-var port = '80';
+var port = '3000';
 app.set('port',port);
 
 var server = http.createServer(app);
+
 
 
 server.listen(port,function(){
