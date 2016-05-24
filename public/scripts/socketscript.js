@@ -8,126 +8,64 @@
 window.onload = function(){
 
 
-
-    function randomXPos(){
-        return Math.random() * 800 + 50;
-    }
-
-    function randomYPos(){
-        return Math.random() * 500 + 50;
-    }
-
-    var enemies = {};
     var socket;
-    var player ={};
-
     //Player Object
-    var Player =  function(data,socket){
-        this.x = data.x;
-        this.y = data.y;
-        this.rotation = data.rotation;
-        this.socket = socket;
-        this.isPlayerBoosting = false;
-        this.isPlayerShooting = false;
-    }
 
-    Player.prototype.constructor = Player;
-    Player.prototype.hasPlayerMoved = function(){
-        if(this.x != player.sprite.x && this.y != player.sprite.y && this.rotation != player.sprite.rotation) return true;
-        else return false;
-    }
-    Player.prototype.hasPlayerStateChanged = function(){
-        if(this.isPlayerBoosting || this.isPlayerShooting || this.hasPlayerMoved())
-            return true;
-        else return false;
-    }
+    var game = new Phaser.Game(1240,800,Phaser.AUTO,'game',{preload:preload,create:create,update:update, render: render});
 
-
-
-
-
-    var game = new Phaser.Game(1240,600,Phaser.AUTO,'game',{preload:preload,create:create,update:update, render: render});
     console.log("Game created");
 
+    var upKey;
+    var downKey;
+    var leftKey;
+    var rightKey;
 
 
-
-
-
+    var playerSprites = {};
     //HELPER FUNCTIONS
     function configSockets(){
 
         try {
-            socket = io.connect("http://localhost:3000/socket");
+            socket = io.connect("http://localhost:80/socket");
         } catch (err) {
             console.log(err);
             //TO DO Set status to warn user
         }
+
+
         //SOCKET HANDLERS
         socket.on("connect",function(){
-            debugger
             console.log("You have connected: "+ socket.id);
-
-
-            //Player starting position
-            var x = randomXPos();
-            var y = randomYPos();
-
-            //Set up and add player
-            player.sprite = game.add.sprite(x,y,'player');
-            game.physics.enable(player.sprite, Phaser.Physics.ARCADE);
-            player.sprite.scale.set(0.4);
-            player.sprite.anchor.set(0.5,0.5);
-            player.sprite.body.allowRotation = false;
-
-            //create new player object to be passed on to server
-            player.object = new Player(player.sprite,socket.id);
-
-
-            console.log(player.object);
-            //Emit the players information
-            socket.emit("join",player.object);
         });
 
-        socket.on("newplayer",function(Player){
-            console.log("New Player: " + Player.socket + " has joined! ");
-
-            addEnemy(Player);
+        socket.on("player disconnect",function(socket){
+            playerSprites[socket].kill();
+            delete playerSprites[socket];
         });
 
-        socket.on("players",function(Players){
 
-            _.each(Players,function(player){
-                addEnemy(player);
+        socket.on('players',function(data){
+            _.each(data,function(dt){
+                if(playerSprites[dt.socket] == undefined){
+                    var sprite;
+                    if(dt.socket == socket.id)
+                        sprite = game.add.sprite(dt.x,dt.y,'player');
+                     else
+                        sprite = game.add.sprite(dt.x,dt.y,'enemy');
+                    sprite.scale.set(0.4);
+                    sprite.anchor.set(0.5,0.5);
+                    game.physics.enable(sprite,Phaser.Physics.ARCADE);
+                    sprite.body.allowRotation = false;
+                    playerSprites[dt.socket] = sprite;
+                }
+                else{
+                    var sprite = playerSprites[dt.socket];
+                    sprite.x = dt.x;
+                    sprite.y = dt.y;
+                    sprite.rotation = dt.rotation;
+                }
             });
-
         });
-
-
-        socket.on("playerleft",function(player){
-
-            enemey[player].kill();
-            delete enemy[player];
-        });
-
-        socket.on("player move",function(Player){
-            console.log("Enemy moving");
-            var enemy = enemies[Player.socket];
-            enemy.x = Player.x;
-            enemy.y = Player.y;
-            enemy.rotation = Player.rotation;
-        });
-    }
-
-
-    function addEnemy(Player){
-        var enemy =  game.add.sprite(Player.x,Player.y,'enemy');
-        enemy.scale.set(0.4);
-        enemy.anchor.set(0.5,0.5);
-        enemy.rotation = Player.rotation;
-        enemies[Player.socket] = enemy;
-
-        return enemy;
     }
 
 
@@ -142,6 +80,7 @@ window.onload = function(){
 
     function create(){
 
+
         //  We're going to be using physics, so enable the Arcade Physics system
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -154,44 +93,43 @@ window.onload = function(){
 
 
         configSockets();
+
+        //controls
+        upKey = game.input.keyboard.addKey(Phaser.KeyCode.W);
+        downKey = game.input.keyboard.addKey(Phaser.KeyCode.S);
+        leftKey = game.input.keyboard.addKey(Phaser.KeyCode.A);
+        rightKey = game.input.keyboard.addKey(Phaser.KeyCode.D);
     }
 
 
 
 
     function update(){
-
-        if(player.sprite !== undefined){
-            if (Phaser.Rectangle.contains(player.sprite.body, game.input.x, game.input.y))
-                player.sprite.body.velocity.setTo(0, 0);
-            else
-                player.sprite.rotation = game.physics.arcade.moveToPointer(player.sprite, 80, game.input.activePointer, 0) + 1.57;
-
-
-            if(player.sprite.x != player.object.x && player.sprite.y != player.object.y && player.sprite.rotation != player.object.rotation){ //if you've moved
-                //if you've moved
-                socket.emit("player move",player.object);
+        if(playerSprites[socket.id] != undefined){
+            var rotation =  game.physics.arcade.angleToPointer(playerSprites[socket.id]) + 1.57;
+            if(upKey.isDown){
+                socket.emit("keyPress",{input:"w",state:true});
             }
+            else socket.emit("keyPress",{input:"w",state:false})
+            if(downKey.isDown){
+                socket.emit("keyPress",{input:"s",state:true});
+            }
+            else socket.emit("keyPress",{input:"s",state:false})
+            if(leftKey.isDown){
+                socket.emit("keyPress",{input:"a",state:true});
+            }
+            else  socket.emit("keyPress",{input:"a",state:false})
+            if(rightKey.isDown){
+                socket.emit("keyPress",{input:"d",state:true});
+            }
+            else socket.emit("keyPress",{input:"d",state:false})
 
-
-
-          //  console.log("X: " + player.x+ "Y: "+ player.y + " rotation: " +player.rotation);
-            player.object.x = player.sprite.x;
-            player.object.y = player.sprite.y;
-            player.object.rotation = player.sprite.rotation;
-
+            socket.emit("rotation",rotation );
         }
 
     }
 
     function render(){
-        //if(player !== undefined)
-        //    game.debug.spriteInfo(player, 32, 450);
     }
-
-
-
-
-
 
 }

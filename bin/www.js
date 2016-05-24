@@ -3,13 +3,13 @@
  */
 var app = require('../server');
 var http = require('http');
-var socket = require('./socketserver');
 
-var port = '3000';
+
+var port = '80';
 app.set('port',port);
 
 var server = http.createServer(app);
-
+require('./socketserver')(server); //require socket server configs
 
 
 server.listen(port,function(){
