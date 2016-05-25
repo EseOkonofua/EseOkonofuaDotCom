@@ -22,6 +22,7 @@ window.onload = function(){
 
 
     var playerSprites = {};
+    var bulletSprites = {};
     //HELPER FUNCTIONS
     function configSockets(){
 
@@ -39,18 +40,21 @@ window.onload = function(){
         });
 
         socket.on("player disconnect",function(socket){
-            playerSprites[socket].kill();
+            playerSprites[socket].destroy();
             delete playerSprites[socket];
         });
 
 
-        socket.on('players',function(data){
-            _.each(data,function(dt){
+        socket.on('update',function(data){
+
+
+            //PLAYERS
+            _.each(data.players,function(dt){
                 if(playerSprites[dt.socket] == undefined){
                     var sprite;
                     if(dt.socket == socket.id)
                         sprite = game.add.sprite(dt.x,dt.y,'player');
-                     else
+                    else
                         sprite = game.add.sprite(dt.x,dt.y,'enemy');
                     sprite.scale.set(0.4);
                     sprite.anchor.set(0.5,0.5);
@@ -65,6 +69,42 @@ window.onload = function(){
                     sprite.rotation = dt.rotation;
                 }
             });
+
+
+            //BULLETS
+            _.each(data.bullets,function(bt){
+                if(bulletSprites[bt.id] == undefined){
+                    var sprite;
+                    if(bt.owner == socket.id)
+                        sprite = game.add.sprite(bt.x,bt.y,'playerBullet');
+                    else
+                        sprite = game.add.sprite(bt.x,bt.y,'enemyBullet');
+                    sprite.scale.set(0.6);
+                    sprite.anchor.set(0.5,0.5);
+                    game.physics.enable(sprite,Phaser.Physics.ARCADE);
+                    sprite.body.allowRotation = false;
+                    sprite.rotation = bt.angle ;
+                    bulletSprites[bt.id] = sprite;
+                }
+                else{
+                    var sprite = bulletSprites[bt.id];
+                    if(bt.setRemove){
+                        console.log("delete bullet " + bt.id);
+                        bulletSprites[bt.id].destroy();
+                        delete bulletSprites[bt.id];
+                        socket.emit("bullet removed",bt.id);
+                    }
+                    else{
+                        sprite.x = bt.x;
+                        sprite.y = bt.y;
+                    }
+                }
+            });
+
+
+
+
+
         });
     }
 
@@ -75,7 +115,8 @@ window.onload = function(){
         game.load.image('background', 'socketassets/black.png');
         game.load.image('player', 'socketassets/playerShip2_blue.png');
         game.load.image('enemy', 'socketassets/playerShip2_red.png');
-
+        game.load.image('playerBullet', 'socketassets/laserBlue03.png');
+        game.load.image('enemyBullet', 'socketassets/laserRed03.png');
     }
 
     function create(){
@@ -123,6 +164,14 @@ window.onload = function(){
                 socket.emit("keyPress",{input:"d",state:true});
             }
             else socket.emit("keyPress",{input:"d",state:false})
+
+            //mouse click
+            if(game.input.activePointer.isDown){
+                socket.emit("shoot",{socket:socket.id,state:true});
+            }
+            else{
+                socket.emit("shoot",{socket:socket.id,state:false});
+            }
 
             socket.emit("rotation",rotation );
         }
