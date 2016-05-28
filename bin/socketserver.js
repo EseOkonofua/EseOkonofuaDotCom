@@ -4,6 +4,7 @@
 
 module.exports = function(server){
     var _ = require('underscore');
+    var gameloop = require('node-gameloop');
    // var server = require('./www');
     var client = require('socket.io')(server).of("/socket");
 
@@ -136,8 +137,7 @@ module.exports = function(server){
 
     });
 
-
-    setInterval(function(){
+    var id = gameloop.setGameLoop(function(delta){
         _.each(players,function(p){
             p.update();
         });
@@ -145,9 +145,10 @@ module.exports = function(server){
             b.update();
         });
         var package = {players:players,bullets:bullets};
-
         client.emit("update",package);
     },1000/60);
+
+
 
 
 

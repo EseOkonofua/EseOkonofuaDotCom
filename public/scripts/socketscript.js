@@ -23,6 +23,8 @@ window.onload = function(){
 
     var playerSprites = {};
     var bulletSprites = {};
+
+
     //HELPER FUNCTIONS
     function configSockets(){
 
