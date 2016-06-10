@@ -5,7 +5,7 @@ var app = require('../server');
 var http = require('http');
 
 
-var port = '80';
+var port = '5000';
 app.set('port',port);
 
 var server = http.createServer(app);
