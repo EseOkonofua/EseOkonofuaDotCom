@@ -4,7 +4,7 @@
   "description": "Ese's website that's super cool",
   "main": "www.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node www.js"
   },
   "keywords": [
     "Home",
@@ -20,9 +20,7 @@
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "node-gameloop": "^0.1.0",
-    "socket.io": "^1.4.6"
-  },
-  "scripts": {
-  "start": "node www.js"
+    "socket.io": "^1.4.6",
+    "underscore": "^1.8.3"
   }
 }
