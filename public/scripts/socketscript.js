@@ -29,7 +29,7 @@ window.onload = function(){
     function configSockets(){
 
         try {
-            socket = io.connect("https://localhost/socket");
+            socket = io.connect(window.location.href);
         } catch (err) {
             console.log(err);
             //TO DO Set status to warn user
