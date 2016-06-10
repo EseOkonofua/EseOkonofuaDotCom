@@ -5,16 +5,17 @@ var app = require('../server');
 var http = require('http');
 
 
-var port = '5000';
+var port = (process.env.PORT || 80);
 app.set('port',port);
 
 var server = http.createServer(app);
 require('./socketserver')(server); //require socket server configs
 
 
-server.listen(port,function(){
-    console.log("Your server is now listening");
+server.listen(app.get("port"),function(){
+    console.log("Now listening on port " + app.get("port"));
 });
+
 server.on('Error',onError);
 server.on('listening',onListening);
 
