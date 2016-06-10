@@ -2,7 +2,7 @@
   "name": "ese",
   "version": "1.0.0",
   "description": "Ese's website that's super cool",
-  "main": "server.js",
+  "main": "www.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +11,9 @@
     "page",
     "Ese"
   ],
+  "engines": {
+    "node": "4.2.4"
+  },
   "author": "Ese Okonofua",
   "license": "ISC",
   "dependencies": {
@@ -18,5 +21,8 @@
     "jade": "^1.11.0",
     "node-gameloop": "^0.1.0",
     "socket.io": "^1.4.6"
+  },
+  "scripts": {
+  "start": "node www.js"
   }
 }
