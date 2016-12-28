@@ -8,4 +8,6 @@ Attached to this website is also a little socket experiment I tried on the **/so
 
 Try opening up 2 browsers and giving the multiplaer a whirl.
 
+<img src="https://github.com/EseOkonofua/EseOkonofuaDotCom/blob/master/eokonofuadotcom.PNG" />
+
 ##EseOkonofuaDotCom2 is in the works!
