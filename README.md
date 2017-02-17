@@ -1,5 +1,5 @@
 # EseOkonofuaDotCom [website](http://eokonofua.com)
-Source code for my current website. 
+Source code for my first website. 
 
 <img height="400" src="https://github.com/EseOkonofua/EseOkonofuaDotCom/blob/master/eokonofuadotcom.PNG" />
 
@@ -11,4 +11,4 @@ Attached to this website is also a little socket experiment I tried on the **/so
 Try opening up 2 browsers and giving the multiplaer a whirl.
 
 
-##EseOkonofuaDotCom2 is in the works!
+##EseOkonofuaDotCom2 is finished you should totally check it out
