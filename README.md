@@ -11,4 +11,4 @@ Attached to this website is also a little socket experiment I tried on the **/so
 Try opening up 2 browsers and giving the multiplaer a whirl.
 
 
-## EseOkonofuaDotCom2 is finished you should totally check it out
+## [EseOkonofuaDotCom2](https://github.com/EseOkonofua/EseOkonofuaDotCom2) is finished you should totally check it out
